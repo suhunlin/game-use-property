@@ -14,9 +14,12 @@ class Game:
         print('plays_object setter:', plays_object)
 
     def player_init(self, players_list):
-        for player in players_list:
-            self.plays_object.append(Player(name = player))
-            print(self.plays_object)
+        if not players_list:
+            print('Player list is empty!!!')
+        else:
+            for player in players_list:
+                self.plays_object.append(Player(name = player))
+                print(self.plays_object)
 
 
 def player_create():
@@ -34,8 +37,11 @@ def player_attack(object1, object2):
 
 def main():
     g1 = Game(player_create())
-    player_attack(g1.plays_object[0], g1.plays_object[1])
-
+    if not g1.plays_object:
+        print('No player!!!')
+    else:
+        player_attack(g1.plays_object[0], g1.plays_object[1])
+        player_attack(g1.plays_object[1], g1.plays_object[0])
 
 if __name__ == '__main__':
     main()
